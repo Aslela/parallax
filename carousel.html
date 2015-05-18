@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="amartuis" />
+
+	<title>Carousel</title>
+    <link rel="stylesheet" href="feature-carousel.css" />
+    <style>
+    .carousel-image
+    {
+        width:640px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="jquery.featureCarousel.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var carousel = $("#carousel").featureCarousel({
+          // include options like this:
+          // (use quotes only for string values, and no trailing comma after last option)
+          // option: value,
+          // option: value
+          autoPlay:0,
+          trackerIndividual:0,
+          trackerSummation:0
+        });
+        /*
+        $("#but_prev").click(function () {
+          carousel.prev();
+        });
+        $("#but_pause").click(function () {
+          carousel.pause();
+        });
+        $("#but_start").click(function () {
+          carousel.start();
+        });
+        $("#but_next").click(function () {
+          carousel.next();
+        });
+        */
+        //carousel.pause();
+      });
+    </script>
+</head>
+
+<body>
+<!-- <a id="but_prev" href="#">PREV</a> | <a id="but_pause" href="#">PAUSE</a> | <a id="but_start" href="#">START</a> | <a id="but_next" href="#">NEXT</a> --> 
+    <div class="carousel-container">
+        <div id="carousel">
+            <div class="carousel-feature">
+                <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro1.jpg" /></a>
+                <div class="carousel-caption">
+                    <p>Some Description for carousel 1</p>
+                </div>
+            </div>
+            <div class="carousel-feature">
+                <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro2.jpg" /></a>
+                <div class="carousel-caption">
+                    <p>Some Description for carousel 2</p>
+                </div>
+            </div>
+            <div class="carousel-feature">
+                <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro3.jpg" /></a>
+                <div class="carousel-caption">
+                    <p>Some Description for carousel 3</p>
+                </div>
+            </div>
+        </div>
+      <div id="carousel-left"><img src="img/arrow-left.png" /></div>
+      <div id="carousel-right"><img src="img/arrow-right.png" /></div>
+    </div>
+</body>
+</html>
