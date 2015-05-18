@@ -1,0 +1,119 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>jQuery</title>
+		
+		<link rel="stylesheet" media="all" href="test.css" />
+		<script type="text/javascript" src="jquery.min.js"></script>
+		
+		<script>
+			$(document).ready(function() {
+				
+				$(window).bind('scroll',function(e){
+					//parallaxScroll();
+					redrawDotNav();
+				});
+				
+				$('li.nav-item').click(function(){
+					$('ul#navBar li').removeClass('current');
+					$(this).addClass('current');
+					
+					var str = $(this).index()+1;
+					$('html, body').animate({
+						scrollTop:$('#slide'+str).offset().top
+					}, 1000);
+					return false;
+				});
+				
+			});
+			
+			
+			function parallaxScroll(){
+				var scrolled = $(window).scrollTop();
+				$('#slide1').css('top',(0-(scrolled*.25))+'px');
+				$('#slide2').css('top',(0-(scrolled*.5))+'px');
+				$('#slide3').css('top',(0-(scrolled*.75))+'px');
+			}
+			
+			function redrawDotNav(){
+				var section1Top =  0;
+				// The top of each section is offset by half the distance to the previous section.
+				var section2Top =  $('#slide2').offset().top - (($('#slide3').offset().top - $('#slide2').offset().top) / 2);
+				var section3Top =  $('#slide3').offset().top - (($('#slide4').offset().top - $('#slide3').offset().top) / 2);
+				var section4Top =  $('#slide4').offset().top - (($(document).height() - $('#slide4').offset().top) / 2);
+				
+				$('ul#navBar li').removeClass('current');
+				
+				if($(document).scrollTop() >= section1Top && $(document).scrollTop() < section2Top){
+					$('ul#navBar li:nth-child(1)').addClass('current');
+				} else if ($(document).scrollTop() >= section2Top && $(document).scrollTop() < section3Top){
+					$('ul#navBar li:nth-child(2)').addClass('current');
+				} else if ($(document).scrollTop() >= section3Top && $(document).scrollTop() < section4Top){
+					$('ul#navBar li:nth-child(3)').addClass('current');
+				} else if ($(document).scrollTop() >= section4Top){
+					$('ul#navBar li:nth-child(4)').addClass('current');
+				}
+				
+			}
+		</script>
+		
+	</head>	
+	
+	
+	
+	<body>
+	
+	<div id="navigation">
+		<ul id="navBar">
+			<li class="nav-item current"></li>
+			<li class="nav-item"></li>
+			<li class="nav-item"></li>
+			<li class="nav-item"></li>
+		</ul>
+	</div>
+		
+		<div class="slide" id="slide1">
+			
+			<div id="container-bg-1">
+				<img src="img/url.jpg">
+			</div>
+			
+			<div id="logo">
+				<img src="img/logo.png" width="300" height="100">
+			</div>
+			
+			<div class="content-container">
+				
+				<h3 class="content">
+				Inspiring Innovation Persistent Perfection
+				</h3>
+				
+			</div>
+			<a class="button" title=""></a>
+		</div>
+		
+		<div class="slide" id="slide2">
+			<div class="content-container">
+				
+			</div>
+			<a class="button" title=""></a>
+		</div>
+		
+		<div class="slide" id="slide3">
+			<div class="content-container">
+				
+			</div>
+			<a class="button" title=""></a>
+		</div>
+		
+		<div class="slide" id="slide4">
+			<div class="content-container">
+				
+			</div>
+			<a class="button last" title=""></a>
+		</div>
+		
+	
+	</body>
+</html>
+</html>
