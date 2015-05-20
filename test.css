@@ -11,23 +11,21 @@ html, body{
 }
 
 #navigation{
-	width: 100%;
-	height: 100%;
-	float: left;
+	z-index: 2;
+	position: fixed;
+	top: 40%;
+	right: 16px;
+	margin-top: -40px;
 }
 
 #navBar{
 	width: 50px;
 	height: 165px;
-	position: fixed;
-	top: 50%;
-	right: 0;
-	margin-top: -82.5px;
-	z-index:1;
 	list-style: none;
 }
 
 #navBar li{
+	position: relative;
 	width: 15px;
 	height: 15px;
 	background-color: ghostwhite;
@@ -42,7 +40,17 @@ html, body{
 #navBar li:hover, #navBar .current{
 	transition-duration: 0.7s;
 	-webkit-transition-duration: 0.7s;
-	background-color: gold;
+	background-color: #96C0CE;
+}
+
+#navBar li h2{
+	right: 25px;
+	top : -8px;
+	position : absolute;
+	color: black;
+	display:none;
+	white-space: nowrap;
+	text-align: right;
 }
 
 /* FOR ALL SLIDES */
@@ -50,15 +58,14 @@ html, body{
 .slide{
 	background-attachment: fixed;
 	width:100%;
-	height:100%;
+	height:115%;
 	position: relative;
 }
 
 /* SLIDES */
 
 #slide1{
-	top: 0;
-	
+	background-color: #333;
 }
 #slide2{
 	background-color: #b33921;
@@ -70,22 +77,18 @@ html, body{
 	background-color: #775c93;
 }
 
-
-#container-bg-1 {
+/* Container content  */
+.container-bg {
 	position: absolute;
 	width :100%;
 	height : 100%;
 }
 
-#container-bg-1 img{
-	width : 100%;
-	height:100%;
-}
-
+/* Section 1  */
 .content-container { 
 	 width: 65%;
 	 margin : auto;
-	}
+}
 
 #logo{
 	top: 30%;	
@@ -94,6 +97,72 @@ html, body{
 	-webkit-box-shadow: 8px 14px 88px 15px rgba(13,13,13,0.61);
 	-moz-box-shadow: 8px 14px 88px 15px rgba(13,13,13,0.61);
 	box-shadow: 8px 14px 88px 15px rgba(13,13,13,0.61);
+}
+
+/* Section 2  */
+.container-bg img{
+	width : 100%;
+	height:100%;
+}
+
+.container-bg-char {
+	position: absolute;
+	left:12%;
+	width :30%;
+	height : 100%;
+	display:none;
+}
+
+#canvas{
+	background-color: none;
+}
+
+.container-bg-power {
+	position: absolute;
+	left:50%;
+	top:30%;
+	width :30%;
+	height : 30%;
+}
+
+.container-bg-char img{
+	width : 100%;
+	height:100%;
+	-webkit-box-shadow: 13px 11px 59px 19px rgba(255,237,255,1);
+	-moz-box-shadow: 13px 11px 59px 19px rgba(255,237,255,1);
+	box-shadow: 13px 11px 59px 19px rgba(255,237,255,1);
+}
+
+/* Section 2  Icon rounded */
+.team-container { 
+	 width: 100%;
+	 position : absolute;
+	 margin : auto;
+	top: 70%;
+	
+}
+
+.team-wrapper{
+	width: 16.6%;
+	float:left;
+	position:relative;
+	margin:0px;
+}
+
+.team-member{
+	width: 60%;
+	height: 150px;
+	border-radius:50%;
+	background-color:white;
+	margin: auto;
+    overflow:hidden;
+    position:relative;
+    cursor: pointer;
+}
+
+.team-member img{
+	width: 170px;
+	height : 160px;
 }
 	
 .content{

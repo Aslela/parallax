@@ -1,10 +1,11 @@
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
-        <title>jQuery | parallax</title>
+        <title>jQuery</title>
 		
 		<link rel="stylesheet" media="all" href="test.css" />
-		<script type="text/javascript" src="jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript" src="Chart.js"></script>
 		
 		<script>
 			$(document).ready(function() {
@@ -13,6 +14,22 @@
 					//parallaxScroll();
 					redrawDotNav();
 				});
+				
+				var radarChartData = {
+					labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+					datasets: [
+						{
+							label: "My First dataset",
+							fillColor: "rgba(92, 220, 175, .7)",
+							strokeColor: "red",
+							pointColor: "black",
+							pointStrokeColor: "black",
+							pointHighlightFill: "white",
+							pointHighlightStroke: "rgba(92, 220, 175, .7)",
+							data: [65,59,90,81,56,55,40]
+						}
+					]
+				};
 				
 				$('li.nav-item').click(function(){
 					$('ul#navBar li').removeClass('current');
@@ -23,6 +40,52 @@
 						scrollTop:$('#slide'+str).offset().top
 					}, 1000);
 					return false;
+				});
+				
+				
+				 /* Show/hide dot lav labels on hover */
+				$('li.nav-item').hover(
+					function () {
+						$(this).find('h2').show();
+					},
+					function () {
+						$(this).find('h2').hide();
+					}
+				);
+				
+				
+				$('.team-member').click(function(){
+					 $( ".container-bg-char img" ).remove();
+					 $index = $(this).data("id");
+					 
+					 var img;
+					 
+					 if($index=="member-1"){
+						img = $('<img />', { src: 'img/rsz_goku.png'});
+					 }else if($index=="member-2"){
+						img = $('<img />', { src: 'img/vegeta.png'});
+					 }else if($index=="member-3"){
+						img = $('<img />', { src: 'img/broly.png'});
+					 }else if($index=="member-4"){
+						img = $('<img />', { src: 'img/goku-ss4.png'});
+					 }else if($index=="member-5"){
+						img = $('<img />', { src: 'img/vegeta-ss4.png'});
+					 }else if($index=="member-6"){
+						img = $('<img />', { src: 'img/gogeta-ss4.png'});
+					 }
+					 
+					 $('.container-bg-char').append(img).hide().fadeIn(800).delay(1000);
+					 
+					window.myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
+						responsive: true,
+						datasetStrokeWidth : 5,
+						angleLineWidth : 3,
+						angleLineColor : "rgba(92, 220, 175, 1)",
+						pointLabelFontSize : 20,
+						pointLabelFontColor : "black",
+					});
+					
+					$('#canvas').hide().fadeIn(800).delay(1000).css("background-color", "rgba(255, 255, 255, 0.5)"); 
 				});
 				
 			});
@@ -65,16 +128,16 @@
 	
 	<div id="navigation">
 		<ul id="navBar">
-			<li class="nav-item current"></li>
-			<li class="nav-item"></li>
-			<li class="nav-item"></li>
-			<li class="nav-item"></li>
+			<li class="nav-item current"><h2>Home</h2></li>
+			<li class="nav-item"><h2>About Us</h2></li>
+			<li class="nav-item"><h2>Portofolio</h2></li>
+			<li class="nav-item"><h2>Contact Us</h2></li>
 		</ul>
 	</div>
 		
 		<div class="slide" id="slide1">
 			
-			<div id="container-bg-1">
+			<div class="container-bg">
 				<img src="img/url.jpg">
 			</div>
 			
@@ -93,8 +156,54 @@
 		</div>
 		
 		<div class="slide" id="slide2">
-			<div class="content-container">
+			
+			<div class="container-bg">
+				<img src="img/background-3.jpg">
+			</div>
+			
+			<div class="container-bg-char">
+			</div>
+			
+			<div class="container-bg-power">
+				<canvas id="canvas"></canvas>
+			</div>
+			
+			<div class="team-container">
+				<div class="team-wrapper">
+					<div class="team-member" data-id="member-1">
+						<img src="img/goku-icon.png">
+					</div>
+				</div>
 				
+				<div class="team-wrapper">
+					<div class="team-member" data-id="member-2">
+						<img src="img/vegeta-icon.png">
+					</div>
+				</div>
+				
+				<div class="team-wrapper">
+					<div class="team-member" data-id="member-3">
+						<img src="img/broly-icon.png">
+					</div>
+				</div>				
+				
+				<div class="team-wrapper">
+					<div class="team-member" data-id="member-4">
+						<img src="img/goku-ss4-icon.png">
+					</div>
+				</div>
+				
+				<div class="team-wrapper">
+					<div class="team-member" data-id="member-5">
+						<img src="img/vegeta-ss4-icon.png">
+					</div>
+				</div>
+				
+				<div class="team-wrapper">
+					<div class="team-member" data-id="member-6">
+						<img src="img/gogeta-icon.png">
+					</div>
+				</div>
 			</div>
 			<a class="button" title=""></a>
 		</div>
