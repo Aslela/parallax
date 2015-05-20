@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="Satria W Sandi" />
+    
+	<title>Fixed Navigation</title>
+    <style>
+        #nav
+        {
+            position:fixed;
+            top: 1%;
+            left: 1%;
+            width:20px;
+            height:20px;
+            background-color: #000;
+            color:#fff;
+            cursor:pointer;
+            text-align: center;
+            z-index: 1;            
+        }
+        .nav-item
+        {
+            margin-left: -9999999px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-1.7.min.js"></script>
+</head>
+
+<body>
+<div style="width: 1280px;height:1280px;background-color: yellow;"></div>
+<div id="nav">
+    <div class="nav-trigger">+</div>
+    <div class="nav-item" id="n1">nav1</div>
+    <div class="nav-item" id="n2">nav2</div>
+    <div class="nav-item" id="n3">nav3</div>
+    <div class="nav-item" id="n4">nav4</div>
+</div>
+<script>
+    $(document).ready(function(){
+        $(".nav-trigger").mouseover(function(){
+            $("#nav").css("height",100).css("width",160);
+            $(".nav-item").css("margin-left",0);                        
+        });
+        $(".nav-trigger").mouseout(function(){
+            $("#nav").css("height",20).css("width",20);
+            $(".nav-item").css("margin-left",-999999);
+        });
+    });
+</script>
+</body>
+</html>
