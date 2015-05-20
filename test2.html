@@ -4,6 +4,9 @@
         <title>jQuery</title>
 		
 		<link rel="stylesheet" media="all" href="test.css" />
+        <!--tambahan css buat slider start here -->
+        <link rel="stylesheet" href="feature-carousel.css" />
+        <!--tambahan css buat slider ends here -->
         <style>
         /*coba styling fixed navigation*/
         #nav
@@ -53,10 +56,21 @@
         {
             text-decoration: underline;
         }
+        /*coba styling untuk slider*/
+        .carousel-container
+        {
+        }
+        .carousel-image
+        {
+            width:480px;
+        }
         </style>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script type="text/javascript" src="Chart.js"></script>
-		
+        <!-- external script untuk slider start here -->
+		<script type="text/javascript" src="jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="jquery.featureCarousel.min.js"></script>
+        <!-- external script untuk slider ends here -->
 		<script>
 			$(document).ready(function() {
 				
@@ -145,17 +159,26 @@
                     if(toggle == 0)
                     {
                         $(this).html("-");
-                        $("#b_content").css("height",100).css("width",200).parent().css("width",250);
-                        $(".nav-item").css("margin-left",0);
+                        $(this).parent("div").parent("#b_content").css("height",100).css("width",200).parent().css("width",250);
+                        $(this).parent("div").siblings(".nav-item").css("margin-left",0);
                         toggle = 1;
                     }else{
                         $(this).html("+");
-                        $("#b_content").css("height",30).css("width",50).parent().css("width",100);
-                        $(".nav-item").css("margin-left",-999999);
+                        $(this).parent("div").parent("#b_content").css("height",30).css("width",50).parent().css("width",100);
+                        $(this).parent("div").siblings(".nav-item").css("margin-left",-999999);
                         toggle = 0;
                     }                        
-                }); 
-				
+                });
+                /*script untuk slider*/
+                var carousel = $("#carousel").featureCarousel({
+                  // include options like this:
+                  // (use quotes only for string values, and no trailing comma after last option)
+                  // option: value,
+                  // option: value
+                  autoPlay:0,
+                  trackerIndividual:0,
+                  trackerSummation:0
+                }); 				
 			});
 			
 			
@@ -288,7 +311,31 @@
 		
 		<div class="slide" id="slide3">
 			<div class="content-container">
-				
+				<!-- coba slider disini -->
+                <div class="carousel-container">
+                    <div id="carousel">
+                        <div class="carousel-feature">
+                            <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro1.jpg" /></a>
+                            <div class="carousel-caption">
+                                <p>Some Description for carousel 1</p>
+                            </div>
+                        </div>
+                        <div class="carousel-feature">
+                            <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro2.jpg" /></a>
+                            <div class="carousel-caption">
+                                <p>Some Description for carousel 2</p>
+                            </div>
+                        </div>
+                        <div class="carousel-feature">
+                            <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro3.jpg" /></a>
+                            <div class="carousel-caption">
+                                <p>Some Description for carousel 3</p>
+                            </div>
+                        </div>
+                    </div>
+                  <div id="carousel-left"><img src="img/arrow-left.png" /></div>
+                  <div id="carousel-right"><img src="img/arrow-right.png" /></div>
+                </div>
 			</div>
 			<a class="button" title=""></a>
 		</div>
