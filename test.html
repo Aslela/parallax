@@ -3,9 +3,85 @@
     <head>
         <title>jQuery</title>
 		
-		<link rel="stylesheet" media="all" href="test.css" />
+		<link rel="stylesheet" media="all" href="css/test.css" />
+        <!--tambahan css buat slider start here -->
+        <link rel="stylesheet" href="css/feature-carousel.css" />
+        <!--tambahan css buat slider ends here -->
+		
+		<!-- Owl Carousel Assets -->
+		<link href="css/owl.carousel.css" rel="stylesheet">
+		<link href="css/owl.theme.css" rel="stylesheet">
+		
+		<!-- Animate css -->
+		<link href="css/animate.min.css" rel="stylesheet">
+		
+        <style>
+        /*coba styling fixed navigation*/
+        #nav
+        {
+            position:fixed;
+            top: 1%;
+            left: 1%;
+            width:100px;
+            height:50px;            
+            color:#fff;
+            cursor:pointer;
+            text-align: center;
+            z-index: 1;
+            
+            float:left;                        
+        }
+        #b_content
+        {
+            float:left;
+            width: 50px;
+            height: 30px;
+            background: rgba(200,200,200,0.7);
+            color:#fff;
+        }
+        #b_arrow
+        {
+            float:left;
+            height:15px;
+            width: 15px;
+            margin-top: 10px;
+            background: url(img/b_arrow.png) right no-repeat;
+        }
+        .nav-item
+        {
+            margin-left: -9999999px;
+        }        
+        .clear
+        {
+            clear:both;
+        }
+        #nav a
+        {
+            color:#fff;
+            text-decoration: none;
+        }
+        #nav a:hover
+        {
+            text-decoration: underline;
+        }
+        /*coba styling untuk slider*/
+        .carousel-container
+        {
+        }
+        .carousel-image
+        {
+            width:480px;
+        }
+        </style>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script type="text/javascript" src="Chart.js"></script>
+		<script type="text/javascript" src="js/Chart.js"></script>
+        <!-- external script untuk slider start here -->
+		<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="js/jquery.featureCarousel.min.js"></script>
+        <!-- external script untuk slider ends here -->
+		<script src="js/owl.carousel.js"></script>
+		
+		
 		
 		<script>
 			$(document).ready(function() {
@@ -15,24 +91,8 @@
 					redrawDotNav();
 				});
 				
-				var radarChartData = {
-					labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-					datasets: [
-						{
-							label: "My First dataset",
-							fillColor: "rgba(92, 220, 175, .7)",
-							strokeColor: "red",
-							pointColor: "black",
-							pointStrokeColor: "black",
-							pointHighlightFill: "white",
-							pointHighlightStroke: "rgba(92, 220, 175, .7)",
-							data: [65,59,90,81,56,55,40]
-						}
-					]
-				};
-				
-				$('li.nav-item').click(function(){
-					$('ul#navBar li').removeClass('current');
+				$('li.right-nav-item').click(function(){
+					$('ul#right-nav-ul li').removeClass('current');
 					$(this).addClass('current');
 					
 					var str = $(this).index()+1;
@@ -44,7 +104,7 @@
 				
 				
 				 /* Show/hide dot lav labels on hover */
-				$('li.nav-item').hover(
+				$('li.right-nav-item').hover(
 					function () {
 						$(this).find('h2').show();
 					},
@@ -53,39 +113,80 @@
 					}
 				);
 				
+				// Animate text on team member's name
+				$('.team-icon-wrapper').hover(
+					function () {
+						$(this).parent().find('h1.team-name').show(500);
+					},
+					function () {
+						$(this).parent().find('h1.team-name').hide();
+					}
+				);
+				
 				
 				$('.team-member').click(function(){
-					 $( ".container-bg-char img" ).remove();
 					 $index = $(this).data("id");
 					 
-					 var img;
+					$( ".container-team-detail" ).children("#team-detail").children(".container-team-img").children("img").animate({
+						top:"700px"
+					},700);
+
+					 $( ".container-team-detail" ).children("#team-detail").children(".container-team-desc").children("p").fadeOut(500);
 					 
-					 if($index=="member-1"){
-						img = $('<img />', { src: 'img/rsz_goku.png'});
-					 }else if($index=="member-2"){
-						img = $('<img />', { src: 'img/vegeta.png'});
-					 }else if($index=="member-3"){
-						img = $('<img />', { src: 'img/broly.png'});
-					 }else if($index=="member-4"){
-						img = $('<img />', { src: 'img/goku-ss4.png'});
-					 }else if($index=="member-5"){
-						img = $('<img />', { src: 'img/vegeta-ss4.png'});
-					 }else if($index=="member-6"){
-						img = $('<img />', { src: 'img/gogeta-ss4.png'});
-					 }
+					 $( ".container-team-detail" ).children("#team-detail").children(".container-team-img").children("#team-img-"+$index).show().animate({
+						top:0
+					 },700);
 					 
-					 $('.container-bg-char').append(img).hide().fadeIn(800).delay(1000);
-					 
-					window.myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
-						responsive: true,
-						datasetStrokeWidth : 5,
-						angleLineWidth : 3,
-						angleLineColor : "rgba(92, 220, 175, 1)",
-						pointLabelFontSize : 20,
-						pointLabelFontColor : "black",
-					});
+					$( ".container-team-detail" ).children("#team-detail").children(".container-team-desc").children("#team-desc-"+$index).show(0);
+					  
+					$( ".container-team-detail" ).children("#team-detail").children(".container-team-img").children("#team-img-"+$index).animate({
+						top:0
+					},700);
 					
-					$('#canvas').hide().fadeIn(800).delay(1000).css("background-color", "rgba(255, 255, 255, 0.5)"); 
+					$("#team-desc-"+$index).addClass('animated lightSpeedIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+						$(this).removeClass("animated lightSpeedIn");
+					});					
+					 
+				});
+                
+                /*script untuk fixed navigation*/
+                var toggle = 0;
+                $(".nav-trigger").click(function(event){
+                    event.preventDefault();            
+                    if(toggle == 0)
+                    {
+                        $(this).html("-");
+                        $(this).parent("div").parent("#b_content").css("height",100).css("width",200).parent().css("width",250);
+                        $(this).parent("div").siblings(".nav-item").css("margin-left",0);
+                        toggle = 1;
+                    }else{
+                        $(this).html("+");
+                        $(this).parent("div").parent("#b_content").css("height",30).css("width",50).parent().css("width",100);
+                        $(this).parent("div").siblings(".nav-item").css("margin-left",-999999);
+                        toggle = 0;
+                    }                        
+                });
+                /*script untuk slider*/
+                var carousel = $("#carousel").featureCarousel({
+                  // include options like this:
+                  // (use quotes only for string values, and no trailing comma after last option)
+                  // option: value,
+                  // option: value
+                  autoPlay:0,
+                  trackerIndividual:0,
+                  trackerSummation:0
+                }); 	
+
+				var sync2 = $("#team-slider");
+			 
+				sync2.owlCarousel({
+					items : 3,
+					itemsDesktop      : [1199,3],
+					itemsDesktopSmall     : [979,2],
+					itemsTablet       : [600,1],
+					itemsMobile       : [554,1],
+					pagination:true,
+					responsiveRefreshRate : 100
 				});
 				
 			});
@@ -105,16 +206,16 @@
 				var section3Top =  $('#slide3').offset().top - (($('#slide4').offset().top - $('#slide3').offset().top) / 2);
 				var section4Top =  $('#slide4').offset().top - (($(document).height() - $('#slide4').offset().top) / 2);
 				
-				$('ul#navBar li').removeClass('current');
+				$('ul#right-nav-ul li').removeClass('current');
 				
 				if($(document).scrollTop() >= section1Top && $(document).scrollTop() < section2Top){
-					$('ul#navBar li:nth-child(1)').addClass('current');
+					$('ul#right-nav-ul li:nth-child(1)').addClass('current');
 				} else if ($(document).scrollTop() >= section2Top && $(document).scrollTop() < section3Top){
-					$('ul#navBar li:nth-child(2)').addClass('current');
+					$('ul#right-nav-ul li:nth-child(2)').addClass('current');
 				} else if ($(document).scrollTop() >= section3Top && $(document).scrollTop() < section4Top){
-					$('ul#navBar li:nth-child(3)').addClass('current');
+					$('ul#right-nav-ul li:nth-child(3)').addClass('current');
 				} else if ($(document).scrollTop() >= section4Top){
-					$('ul#navBar li:nth-child(4)').addClass('current');
+					$('ul#right-nav-ul li:nth-child(4)').addClass('current');
 				}
 				
 			}
@@ -125,13 +226,23 @@
 	
 	
 	<body>
-	
-	<div id="navigation">
-		<ul id="navBar">
-			<li class="nav-item current"><h2>Home</h2></li>
-			<li class="nav-item"><h2>About Us</h2></li>
-			<li class="nav-item"><h2>Portofolio</h2></li>
-			<li class="nav-item"><h2>Contact Us</h2></li>
+	<div id="nav">
+        <div id="b_content">
+            <div ><a href="#" class="nav-trigger">+</a></div>
+            <div class="nav-item" id="n1"><a href="#">Home</a></div>
+            <div class="nav-item" id="n2"><a href="#">Who we are ?</a></div>
+            <div class="nav-item" id="n3"><a href="#">Team(s)</a></div>
+            <div class="nav-item" id="n4"><a href="#">Portofolio</a></div>
+        </div>
+        <div id="b_arrow"></div>
+        <div class="clear"></div>
+    </div>
+	<div id="right-nav-container">
+		<ul id="right-nav-ul">
+			<li class="right-nav-item current"><h2>Home</h2></li>
+			<li class="right-nav-item"><h2>About Us</h2></li>
+			<li class="right-nav-item"><h2>Portofolio</h2></li>
+			<li class="right-nav-item"><h2>Contact Us</h2></li>
 		</ul>
 	</div>
 		
@@ -168,60 +279,172 @@
 				<canvas id="canvas"></canvas>
 			</div>
 			
-			<div class="team-container">
-				<div class="team-wrapper">
-					<div class="team-member" data-id="member-1">
-						<img src="img/goku-icon.png">
-					</div>
-				</div>
-				
-				<div class="team-wrapper">
-					<div class="team-member" data-id="member-2">
-						<img src="img/vegeta-icon.png">
-					</div>
-				</div>
-				
-				<div class="team-wrapper">
-					<div class="team-member" data-id="member-3">
-						<img src="img/broly-icon.png">
-					</div>
-				</div>				
-				
-				<div class="team-wrapper">
-					<div class="team-member" data-id="member-4">
-						<img src="img/goku-ss4-icon.png">
-					</div>
-				</div>
-				
-				<div class="team-wrapper">
-					<div class="team-member" data-id="member-5">
-						<img src="img/vegeta-ss4-icon.png">
-					</div>
-				</div>
-				
-				<div class="team-wrapper">
-					<div class="team-member" data-id="member-6">
-						<img src="img/gogeta-icon.png">
-					</div>
-				</div>
-			</div>
+			
 			<a class="button" title=""></a>
 		</div>
 		
 		<div class="slide" id="slide3">
-			<div class="content-container">
-				
-			</div>
+			
+				<!-- coba slider disini -->
+                <div class="carousel-container">
+                    <div id="carousel">
+                        <div class="carousel-feature">
+                            <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro1.jpg" /></a>
+                            <div class="carousel-caption">
+                                <p>Some Description for carousel 1</p>
+                            </div>
+                        </div>
+                        <div class="carousel-feature">
+                            <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro2.jpg" /></a>
+                            <div class="carousel-caption">
+                                <p>Some Description for carousel 2</p>
+                            </div>
+                        </div>
+                        <div class="carousel-feature">
+                            <a href="#"><img class="carousel-image" alt="blabalabla" src="img/caro3.jpg" /></a>
+                            <div class="carousel-caption">
+                                <p>Some Description for carousel 3</p>
+                            </div>
+                        </div>
+                    </div>
+                  <div id="carousel-left"><img src="img/arrow-left.png" /></div>
+                  <div id="carousel-right"><img src="img/arrow-right.png" /></div>
+                </div>
+			
 			<a class="button" title=""></a>
 		</div>
 		
 		<div class="slide" id="slide4">
-			<div class="content-container">
+			<div class="container-slide-4">
+				<div class="container-team-above">
+					<div class="container-team-detail">
+						<div class="item" id="team-detail-0">
+						</div>
+						<!--Team's Detail-->
+						<div class="item" id="team-detail">
+							<!--Team's Image-->
+							<div class="container-team-img">		
+								<img class="hide" id="team-img-1" src="img/goku.png" width="200" height="380" >
+								<img class="hide" id="team-img-2" src="img/goku.png" width="200" height="380" >
+								<img class="hide" id="team-img-3" src="img/goku.png" width="200" height="380" >
+								<img class="hide"id="team-img-4" src="img/goku.png" width="200" height="380" >
+								<img class="hide"id="team-img-5" src="img/broly.png" width="200" height="380" >
+								<img class="hide" id="team-img-6" src="img/vegeta.png" width="200" height="380" >
+							</div>
+							<!--Team's Description-->
+							<div class="container-team-desc">
+								<p class="hide" id="team-desc-1">
+								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+								</p>
+								
+								<p class="hide" id="team-desc-2">
+								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+								</p>
+								
+								<p class="hide" id="team-desc-3">
+								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+								</p>
+								
+								<p class="hide" id="team-desc-4">
+								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+								</p>
+								
+								<p class="hide" id="team-desc-5">
+								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+								</p>
+								
+								<p class="hide" id="team-desc-6">
+								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+								</p>
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
 				
+				<div class="container-team-member">
+					<div id="team-slider" class="container-team-slider">
+						<div class="item">
+							<!-- Team Icon Image -->
+							<div class="team-icon-wrapper">
+								<div class="team-member" data-id="1">
+									<img src="img/ironman.jpg">
+								</div>
+							</div>
+							
+							<div class="team-name-wrapper">
+								<h1 class="team-name">Iron Man<h1>
+							</div>
+							
+						</div>
+						
+						<div class="item">
+							<!-- Team Icon Image -->
+							<div class="team-icon-wrapper">
+								<div class="team-member" data-id="2">
+									<img src="img/ironman.jpg">
+								</div>
+							</div>
+							
+							<div class="team-name-wrapper">
+								<h1 class="team-name">Iron Man<h1>
+							</div>
+						</div>
+						<div class="item">
+							<!-- Team Icon Image -->
+							<div class="team-icon-wrapper">
+								<div class="team-member" data-id="3">
+									<img src="img/ironman.jpg">
+								</div>
+							</div>
+							
+							<div class="team-name-wrapper">
+								<h1 class="team-name">Iron Man<h1>
+							</div>
+						</div>
+						<div class="item">
+							<!-- Team Icon Image -->
+							<div class="team-icon-wrapper">
+								<div class="team-member" data-id="4">
+									<img src="img/ironman.jpg">
+								</div>
+							</div>
+							
+							<div class="team-name-wrapper">
+								<h1 class="team-name">Iron Man<h1>
+							</div>
+							
+						</div>
+						<div class="item">
+							<!-- Team Icon Image -->
+							<div class="team-icon-wrapper">
+								<div class="team-member" data-id="5">
+									<img src="img/ironman.jpg">
+								</div>
+							</div>
+							
+							<div class="team-name-wrapper">
+								<h1 class="team-name">Iron Man<h1>
+							</div>
+						</div>
+						<div class="item">
+							<!-- Team Icon Image -->
+							<div class="team-icon-wrapper">
+								<div class="team-member" data-id="6">
+									<img src="img/ironman.jpg">
+								</div>
+							</div>
+							
+							<div class="team-name-wrapper">
+								<h1 class="team-name">Iron Man<h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			
 			</div>
-			<a class="button last" title=""></a>
 		</div>
-		
 	
 	</body>
 </html>
