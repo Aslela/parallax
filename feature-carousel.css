@@ -8,7 +8,7 @@
 #carousel {
   height:560px;
   width:100%; /*custumized suppused be 960px*/
-  background-color:#CCC;
+  /*background-color:#CCC;*/
   position:relative;
   margin-bottom:0.5em;
   font-size:12px;
