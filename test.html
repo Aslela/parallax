@@ -80,9 +80,7 @@
         <script type="text/javascript" src="js/jquery.featureCarousel.min.js"></script>
         <!-- external script untuk slider ends here -->
 		<script src="js/owl.carousel.js"></script>
-		
-		
-		
+				
 		<script>
 			$(document).ready(function() {
 				
@@ -127,19 +125,19 @@
 				$('.team-member').click(function(){
 					 $index = $(this).data("id");
 					 
-					$( ".container-team-detail" ).children("#team-detail").children(".container-team-img").children("img").animate({
+					$(".container-team-img").children("img").animate({
 						top:"700px"
 					},700);
-
-					 $( ".container-team-detail" ).children("#team-detail").children(".container-team-desc").children("p").fadeOut(500);
+					
+					 $(".container-team-desc").children("p").fadeOut(500);
 					 
-					 $( ".container-team-detail" ).children("#team-detail").children(".container-team-img").children("#team-img-"+$index).show().animate({
+					 $(".container-team-img").children("#team-img-"+$index).show().animate({
 						top:0
 					 },700);
 					 
-					$( ".container-team-detail" ).children("#team-detail").children(".container-team-desc").children("#team-desc-"+$index).show(0);
+					$(".container-team-desc").children("#team-desc-"+$index).show(0);
 					  
-					$( ".container-team-detail" ).children("#team-detail").children(".container-team-img").children("#team-img-"+$index).animate({
+					$(".container-team-img").children("#team-img-"+$index).animate({
 						top:0
 					},700);
 					
@@ -316,52 +314,44 @@
 		
 		<div class="slide" id="slide4">
 			<div class="container-slide-4">
-				<div class="container-team-above">
-					<div class="container-team-detail">
-						<div class="item" id="team-detail-0">
-						</div>
-						<!--Team's Detail-->
-						<div class="item" id="team-detail">
-							<!--Team's Image-->
-							<div class="container-team-img">		
-								<img class="hide" id="team-img-1" src="img/goku.png" width="200" height="380" >
-								<img class="hide" id="team-img-2" src="img/goku.png" width="200" height="380" >
-								<img class="hide" id="team-img-3" src="img/goku.png" width="200" height="380" >
-								<img class="hide"id="team-img-4" src="img/goku.png" width="200" height="380" >
-								<img class="hide"id="team-img-5" src="img/broly.png" width="200" height="380" >
-								<img class="hide" id="team-img-6" src="img/vegeta.png" width="200" height="380" >
-							</div>
-							<!--Team's Description-->
-							<div class="container-team-desc">
-								<p class="hide" id="team-desc-1">
-								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
-								</p>
-								
-								<p class="hide" id="team-desc-2">
-								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
-								</p>
-								
-								<p class="hide" id="team-desc-3">
-								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
-								</p>
-								
-								<p class="hide" id="team-desc-4">
-								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
-								</p>
-								
-								<p class="hide" id="team-desc-5">
-								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
-								</p>
-								
-								<p class="hide" id="team-desc-6">
-								Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
-								</p>
-								
-							</div>
-						</div>
-						
-					</div>
+				<!--Team's Image-->
+				<div class="container-team-img">		
+					<img class="hide" id="team-img-1" src="img/goku.png" width="500" height="750" >
+					<img class="hide" id="team-img-2" src="img/goku.png" width="500" height="750" >
+					<img class="hide" id="team-img-3" src="img/goku.png" width="500" height="750" >
+					<img class="hide" id="team-img-4" src="img/goku.png" width="500" height="750" >
+					<img class="hide" id="team-img-5" src="img/broly.png" width="500" height="750" >
+					<img class="hide" id="team-img-6" src="img/vegeta.png" width="500" height="750" >
 				</div>
+
+				<!--Team's Description-->
+				<div class="container-team-desc">
+					<p class="hide" id="team-desc-1">
+						Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+					</p>
+								
+					<p class="hide" id="team-desc-2">
+						Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+					</p>
+								
+					<p class="hide" id="team-desc-3">
+						Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+					</p>
+								
+					<p class="hide" id="team-desc-4">
+						Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+					</p>
+								
+					<p class="hide" id="team-desc-5">
+						Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+					</p>
+								
+					<p class="hide" id="team-desc-6">
+						Bacon ipsum dolor amet deserunt ham capicola rump bacon cow ad prosciutto pork belly nostrud officia ham hock dolore. In ad excepteur sint, leberkas exercitation venison dolore aliquip rump ribeye short ribs boudin. Ex prosciutto enim alcatra tempor jowl drumstick landjaeger sunt bacon ipsum. Dolor swine landjaeger, turducken sausage beef ribs anim labore.
+					</p>
+								
+				</div>
+						
 				
 				<div class="container-team-member">
 					<div id="team-slider" class="container-team-slider">
