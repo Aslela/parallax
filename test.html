@@ -126,7 +126,7 @@
 					 $index = $(this).data("id");
 					 
 					$(".container-team-img").children("img").animate({
-						top:"700px"
+						top:"800px"
 					},700);
 					
 					 $(".container-team-desc").children("p").fadeOut(500);
@@ -316,12 +316,12 @@
 			<div class="container-slide-4">
 				<!--Team's Image-->
 				<div class="container-team-img">		
-					<img class="hide" id="team-img-1" src="img/goku.png" width="500" height="750" >
-					<img class="hide" id="team-img-2" src="img/goku.png" width="500" height="750" >
-					<img class="hide" id="team-img-3" src="img/goku.png" width="500" height="750" >
-					<img class="hide" id="team-img-4" src="img/goku.png" width="500" height="750" >
-					<img class="hide" id="team-img-5" src="img/broly.png" width="500" height="750" >
-					<img class="hide" id="team-img-6" src="img/vegeta.png" width="500" height="750" >
+					<img class="hide" id="team-img-1" src="img/goku.png" width="500" height="710" >
+					<img class="hide" id="team-img-2" src="img/goku.png" width="500" height="710" >
+					<img class="hide" id="team-img-3" src="img/goku.png" width="500" height="710" >
+					<img class="hide" id="team-img-4" src="img/goku.png" width="500" height="710" >
+					<img class="hide" id="team-img-5" src="img/broly.png" width="500" height="710" >
+					<img class="hide" id="team-img-6" src="img/vegeta.png" width="500" height="710" >
 				</div>
 
 				<!--Team's Description-->
@@ -435,6 +435,24 @@
 			
 			</div>
 		</div>
+	
+	<script type="text/javascript">
+        $(function() {
+			$('.team-member').hover(
+				function(){
+					var $this = $(this).children("img");
+					$this.stop().animate({'opacity':'1.0','height':'210px','top':'-10px','left':'0px'});
+					$(this).addClass('transition');
+				},
+				function(){
+					var $this = $(this).children("img");
+					$(this).removeClass('transition');
+					$this.stop().animate({'opacity':'0.9','height':'620px','top':'-215px','left':'-112px'});
+					
+				}
+			);
+       });
+    </script>
 	
 	</body>
 </html>
